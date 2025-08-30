@@ -24,6 +24,10 @@ RSpec.describe StringCalculator do
 			expect(calc.add("//;\n1;2")).to eq(3)
 		end
 
+    it 'supports multi-character delimiter in [ ] like //[***]\\n1***2***3' do
+      expect(calc.add("//[***]\n1***2***3")).to eq(6)
+    end
+
 		it 'raises with all negative numbers listed' do
 			expect { calc.add("1,-2,3,-4") }.to raise_error(ArgumentError, "negative numbers not allowed: -2,-4")
 		end
